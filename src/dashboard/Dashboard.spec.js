@@ -1,12 +1,10 @@
 // Test away
 import React from "react";
-// import renderer from 'react-test-renderer';
+
 import * as rtl from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import Dashboard from "./Dashboard";
-// import { exportAllDeclaration } from "@babel/types";
-// import Display from "../display/Display";
-// import Controls from "../controls/Controls"
+
 
 // STEP 2 set up cleaning up in afterEach
 afterEach(rtl.cleanup);
