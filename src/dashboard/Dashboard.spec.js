@@ -4,9 +4,9 @@ import React from "react";
 import * as rtl from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import Dashboard from "./Dashboard";
-import { exportAllDeclaration } from "@babel/types";
-import Display from "../display/Display";
-import Controls from "../controls/Controls"
+// import { exportAllDeclaration } from "@babel/types";
+// import Display from "../display/Display";
+// import Controls from "../controls/Controls"
 
 // STEP 2 set up cleaning up in afterEach
 afterEach(rtl.cleanup);
