@@ -13,7 +13,7 @@ afterEach(rtl.cleanup);
 // STEP 3 take care of repetitive operations inside
 // a beforeEach function
 let wrapper;
-let unlocked =()=>wrapper.queryByText("Unlocked");
+let Unlocked =()=>wrapper.queryByText("Unlocked");
 let Open =()=>wrapper.queryByText("Open");
 
 let LockGate = () =>{
@@ -53,8 +53,8 @@ describe("Dashboard component renders", () => {
     });
     
     it ("renders an unlocked test node", ()=>{
-        expect (unlocked()).toBeInTheDocument();
-        expect (unlocked()).toBeInTheDocument();
+        expect (Unlocked()).toBeInTheDocument();
+        expect (Unlocked()).toBeVisible();
     })
     
     it ("renders open in test node", ()=>{
