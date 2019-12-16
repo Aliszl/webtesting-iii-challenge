@@ -6,6 +6,7 @@ import * as rtl from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Dashboard from './Dashboard';
 import { exportAllDeclaration } from '@babel/types';
+import Display from "../display/Display"
 
 // STEP 2 set up cleaning up in afterEach
 afterEach(rtl.cleanup);
@@ -77,7 +78,7 @@ describe("Dashboard component renders", () => {
     })
 })
 
-//actual tests- for how it will change on interaction
+//Interactive tests
 describe("Dashboard component on clicking Close Gate", () => {
  
     it ("clicking Close Gate changes open to closed", ()=>{
@@ -86,15 +87,35 @@ describe("Dashboard component on clicking Close Gate", () => {
         expect (Unlocked()).toBeInTheDocument();//unchanged
         expect (Unlocked()).toBeVisible();//unchanged
 
+        expect (Closed()).toBeInTheDocument();
+        expect (Closed()).toBeVisible();
+        expect (CloseGate()).toBe(null);
+
         expect (OpenGate()).toBeVisible();// close Gate changes to Open Gate
         expect (OpenGate()).toBeInTheDocument();// close Gate changes to Open Gate
         expect (CloseGate()).toBe(null);// close Gate changes to Open Gate so close Gate is null
 
         expect (LockGate()).toBeVisible();
-        // expect (Closed()).toBeInTheDocument();
-        // expect (Closed()).toBeVisible();
-        
+        expect (LockGate()).toBeInTheDocument();
     });
-  
-})
 
+     
+})
+// describe("Dashboard component on clicking Open Gate", () => {
+ 
+ 
+//     it ("displays 'Closed' if the closed prop is true", ()=>{
+//         wrapper = rtl.render(<Display closed={true} />);
+       
+//         expect(Closed()).toBeVisible();
+    
+       
+//     });
+//     it ("displays 'Open' if the closed prop is false", ()=>{
+//         wrapper = rtl.render(<Display closed={false} />);
+       
+//         expect(Open()).toBeVisible();
+//     });
+    
+  
+// })
