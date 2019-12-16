@@ -13,9 +13,12 @@ afterEach(rtl.cleanup);
 // STEP 3 take care of repetitive operations inside
 // a beforeEach function
 let wrapper;
-let Unlocked =()=>wrapper.queryByText("Unlocked");
-let Open =()=>wrapper.queryByText("Open");
-
+let Unlocked = () =>{
+    return wrapper.queryByText('Unlocked');
+}
+let Open = () =>{
+    return wrapper.queryByText('Open');
+}
 let LockGate = () =>{
     return wrapper.queryByText('Lock Gate');
 }
@@ -43,7 +46,7 @@ it('renders without crashing', () => {
   wrapper.debug();
 });
 
-//make a trivial test
+//Test for how it will initially load
 
 describe("Dashboard component renders", () => {
 
@@ -51,23 +54,47 @@ describe("Dashboard component renders", () => {
         wrapper.debug();
         expect(wrapper.container).toMatchSnapshot();
     });
-    
-    it ("renders an unlocked test node", ()=>{
-        expect (Unlocked()).toBeInTheDocument();
-        expect (Unlocked()).toBeVisible();
+    it ("renders Close Gate in test node", ()=>{
+        expect (CloseGate()).toBeInTheDocument();
+        expect (CloseGate()).toBeVisible();
     })
     
     it ("renders open in test node", ()=>{
         expect (Open()).toBeInTheDocument();
         expect (Open()).toBeVisible();
+        expect (OpenGate()).toBe(null);
     })
-    it ("renders open in test node", ()=>{
+
+    it ("renders an Unlocked in test node", ()=>{
+        expect (Unlocked()).toBeInTheDocument();
+        expect (Unlocked()).toBeVisible();
+    })
+    
+    it ("renders Lock Gate in test node", ()=>{
         expect (LockGate()).toBeInTheDocument();
         expect (LockGate()).toBeVisible();
         expect(LockGate()).toBeDisabled();
     })
-    it ("renders open in test node", ()=>{
-        expect (CloseGate()).toBeInTheDocument();
-        expect (CloseGate()).toBeVisible();
-    })
 })
+
+//actual tests- for how it will change on interaction
+describe("Dashboard component on clicking Close Gate", () => {
+ 
+    it ("clicking Close Gate changes open to closed", ()=>{
+        rtl.fireEvent.click(CloseGate());
+        // expect (CloseGate()).toBeInTheDocument();
+        expect (Unlocked()).toBeInTheDocument();//unchanged
+        expect (Unlocked()).toBeVisible();//unchanged
+
+        expect (OpenGate()).toBeVisible();// close Gate changes to Open Gate
+        expect (OpenGate()).toBeInTheDocument();// close Gate changes to Open Gate
+        expect (CloseGate()).toBe(null);// close Gate changes to Open Gate so close Gate is null
+
+        expect (LockGate()).toBeVisible();
+        // expect (Closed()).toBeInTheDocument();
+        // expect (Closed()).toBeVisible();
+        
+    });
+  
+})
+
