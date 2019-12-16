@@ -108,11 +108,12 @@ describe("Dashboard component on clicking Close Gate", () => {
       expect(Open()).toBeInTheDocument();
       expect(Open()).toBeVisible();
 
-      // expect (LockGate()).toBeVisible();
-      // expect (LockGate()).toBeInTheDocument();
+      expect (LockGate()).toBeVisible();
+      expect (LockGate()).toBeInTheDocument();
+      expect(LockGate()).toBeDisabled();
 
-      expect(CloseGate()).toBeVisible(); // close Gate changes to Open Gate
-      expect(CloseGate()).toBeInTheDocument(); // close Gate changes to Open Gate
+      expect(CloseGate()).toBeVisible(); 
+      expect(CloseGate()).toBeInTheDocument(); 
 
       expect(OpenGate()).toBe(null); // close Gate changes to Open Gate so close Gate is null
     });
