@@ -118,18 +118,23 @@ describe("Dashboard component on clicking Close Gate", () => {
       expect(OpenGate()).toBe(null); // close Gate changes to Open Gate so close Gate is null
     });
 });
-// describe("Dashboard component on clicking Open Gate", () => {
 
-//     it ("displays 'Closed' if the closed prop is true", ()=>{
-//         wrapper = rtl.render(<Display closed={true} />);
+it("clicking Lock Gate", () => {
+  rtl.fireEvent.click(CloseGate());
+  rtl.fireEvent.click(LockGate());
 
-//         expect(Closed()).toBeVisible();
+  expect(Locked()).toBeInTheDocument(); 
+  expect(Locked()).toBeVisible();
 
-//     });
-//     it ("displays 'Open' if the closed prop is false", ()=>{
-//         wrapper = rtl.render(<Display closed={false} />);
+  expect(Closed()).toBeInTheDocument();
+  expect(Closed()).toBeVisible();
 
-//         expect(Open()).toBeVisible();
-//     });
+  expect (UnlockGate()).toBeVisible();
+  expect (UnlockGate()).toBeInTheDocument();
+  expect(UnlockGate()).toBeEnabled();
 
-// })
+  expect(OpenGate()).toBeVisible(); 
+  expect(OpenGate()).toBeInTheDocument(); 
+  expect(OpenGate()).toBeDisabled();
+});
+
